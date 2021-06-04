@@ -19,6 +19,7 @@ for m=0:noFrames-1
     Xw = Xn .* W';      % zokenkuju
     Xz = [Xw, zp];      % pridam na konec zero padding  
     Xf = fft(Xz);       % provedu fft
+    %Xf = mydft(Xz);    % nebo provedu moji dft - trva vecnost
     Xs = [Xf(N/2+1:N), Xf(1:N/2)];  % prohodim
     S(:,m+1) = Xs;
 end
