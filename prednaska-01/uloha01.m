@@ -1,4 +1,4 @@
-clear;clc;
+clear; clc; close all;
 
 % nacteni souboru
 load('F01_421C0201_BUS.mat')

@@ -10,7 +10,7 @@ function S = mystft(X, N, hop, FFTLength, W)
 %   W : okenkovaci funkce
 %---------------------------------------------------------------
 
-noFrames = ceil(1+((size(X,2)-1024)/128));
+noFrames = ceil(1+((size(X,2)-N)/hop));
 S = zeros(N, noFrames);
 zp = zeros(1, FFTLength-N);
 
@@ -20,6 +20,6 @@ for m=0:noFrames-1
     Xz = [Xw, zp];      % pridam na konec zero padding  
     Xf = fft(Xz);       % provedu fft
     %Xf = mydft(Xz);    % nebo provedu moji dft - trva vecnost
-    Xs = [Xf(N/2+1:N), Xf(1:N/2)];  % prohodim
+    Xs = [Xf(FFTLength/2+1:FFTLength), Xf(1:FFTLength/2)];  % prohodim
     S(:,m+1) = Xs;
 end

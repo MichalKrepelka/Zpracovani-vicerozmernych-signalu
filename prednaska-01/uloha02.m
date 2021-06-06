@@ -1,4 +1,4 @@
-clear;clc;
+clear; clc; close all;
 
 % nacteni souboru
 load('F01_421C0201_BUS.mat')
@@ -26,4 +26,8 @@ y1 = h_tilde' * Xt_tilde;
 % spoctu transformace jednotlivych filtru
 hitheta = mydft(h_tilde);   %tohle se lisi
 tmp=mydft(h_tilde(1:L));
+
+%%% bod 3 ulohy %%%
+% Vystupy nebudou stejne, ptz bod 1 byl udelan linearni konvoluci
+% a bod 2 kruhovou, navic pouzito framovani
 
