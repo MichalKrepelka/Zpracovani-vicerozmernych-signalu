@@ -14,6 +14,6 @@ aux = mystft(X(1,:), N, hop, N, hamming(N));
 figure
 imagesc(log(abs(aux)))
 
-aux = stft(X(1,:), 'OverlapLength', overlap, 'FFTLength', N, 'Window', hamming(N));
+aux2 = stft(X(1,:), 'OverlapLength', overlap, 'FFTLength', N, 'Window', hamming(N));
 figure
-imagesc(log(abs(aux)))
+imagesc(log(abs(aux2)))

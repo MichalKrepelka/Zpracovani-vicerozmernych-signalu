@@ -15,7 +15,7 @@ Xlen = noFrames*hop+(N-hop);
 X = zeros(1, Xlen);
 
 for m=0:noFrames-1
-    Xs = S(:,m+1);      % zpracovavam po framech
+    Xs = S(:,m+1)';      % zpracovavam po framech, pozor, je to sloupec ne radek => transpozice
     Xs = [Xs(1:FFTLength/2), Xs(FFTLength/2+1:FFTLength)];  % prohodim zpet
     Xf = ifft(Xs);       % provedu inverzni fft
     Xz = Xf(1:N);       % oriznu padding
