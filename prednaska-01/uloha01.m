@@ -7,7 +7,7 @@ N = 1024;     % delka okenka
 hop = 128;  % posunuti dalsiho okenka
 overlap = N - hop;  % prekryv dvou okenek
 
-X = X(:,1:4096);
+%X = X(:,1:4096);
 
 % Zbynek pouziva hop, Matlab overlap
 aux = mystft(X(1,:), N, hop, N, hamming(N));

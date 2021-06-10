@@ -10,6 +10,10 @@ function S = mystft(X, N, hop, FFTLength, W)
 %   W : okenkovaci funkce
 %---------------------------------------------------------------
 
+% oriznu, co se mi nevejde do okenka (alternativne padding nulami)
+over=mod(size(X,2)-(N-hop), hop);
+X = X(1,1:end-over);
+
 noFrames = ceil(1+((size(X,2)-N)/hop));
 S = zeros(N, noFrames);
 zp = zeros(1, FFTLength-N);
