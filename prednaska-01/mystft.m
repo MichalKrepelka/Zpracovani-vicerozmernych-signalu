@@ -24,6 +24,6 @@ for m=0:noFrames-1
     Xz = [Xw, zp];      % pridam na konec zero padding  
     Xf = fft(Xz);       % provedu fft
     %Xf = mydft(Xz);    % nebo provedu moji dft - trva vecnost
-    Xs = [Xf(FFTLength/2+1:FFTLength), Xf(1:FFTLength/2)];  % prohodim
-    S(:,m+1) = Xs;
+    %Xs = [Xf(FFTLength/2+1:FFTLength), Xf(1:FFTLength/2)];  % prohodim
+    S(:,m+1) = Xf;
 end
