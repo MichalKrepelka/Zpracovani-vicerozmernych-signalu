@@ -19,7 +19,7 @@ c = 343;    % Rychlost sireni signalu (= cca rychlost zvuku) (m/s)
 % Zakresli magnitudovou charakteristiku prenosove funkce v zavislosti na
 % uhlu sireni signalu pro zvolenou frekvenci
 theta = 1000; % zvolena frekvence 1kHz
-theta = 2 * pi * theta ;%/ fs; % normalizace
+theta = 2 * pi * theta ;%/ fs; % normalizace % nahodnym zakomentovanim fs se zda, ze dela to, co chci
 
 rad = pi / 180; % Neni lepsi 2pi vydelit Fs?
 alpha_ticks = 0:rad:2*pi-rad; % vsechny uhly pro zavislost, odcitam, abych mel 360
@@ -27,7 +27,7 @@ alpha_ticks = 0:rad:2*pi-rad; % vsechny uhly pro zavislost, odcitam, abych mel 3
 % vektor ma jednotkovou delku a znam uhel alfa
 u = [1 * cos(alpha_ticks); 1 * sin(alpha_ticks)];
 
-D = (u' * P / c); % posuny
+D = u' * P / c; % posunuti
 
 % Prenosova funkce
 H = zeros(size(D, 1), 1);
