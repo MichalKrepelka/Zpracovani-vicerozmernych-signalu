@@ -25,6 +25,6 @@ for i=1:size(X_stftm, 2)
     aux(i,:,:) = W_MMSE' * squeeze(X_stftm(i,:,:)); % w'*x = s
 end
 
-X_istftm = istftm(X_stfm, hop, N, window);
+S_aux = istftm(aux, hop, N, window);
 
-% soundsc(X_istftm(1,:), Fs)
+% soundsc(S_aux(1,:), Fs)
