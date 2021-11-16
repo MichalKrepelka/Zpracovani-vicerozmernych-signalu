@@ -18,13 +18,17 @@ S_stftm = sftfm(S, hop, N, window);
 % na kazde frekvenci spocitam beamformer a aplikuju ho
 aux = zeros(size(X_stftm));
 for i=1:size(X_stftm, 2)
-    C_X = cov(squeeze(X_stftm(i,:,:)));
+%     C_X = cov(squeeze(X_stftm(:,i,:)));
+    C_X = squeeze(X_stftm(:,i,:)) * squeeze(X_stftm(:,i,:))' / length(squeeze(X_stftm(:,i,:)));
     C_X_inv = inv(C_X);
-    C_SX = cov(squeeze(S_stftm(i,:,:)), squeeze(X_stftm(i,:,:)));
+%     C_SX = cov(squeeze(S_stftm(:,i,:)), squeeze(X_stftm(:,i,:)));
+    C_SX = squeeze(S_stftm(:,i,:)) * squeeze(X_stftm(:,i,:))' / length(squeeze(X_stftm(:,i,:)));
     W_MMSE = C_X_inv * C_SX;
-    aux(i,:,:) = W_MMSE' * squeeze(X_stftm(i,:,:)); % w'*x = s
+    aux(:,i,:) = W_MMSE' * squeeze(X_stftm(:,i,:)); % w'*x = s
 end
 
 S_aux = istftm(aux, hop, N, window);
 
-% soundsc(S_aux(1,:), Fs)
+% soundsc(X(1,:), Fs)
+soundsc(S_aux(1,:), Fs)
+% soundsc(S(1,:), Fs)
