@@ -22,15 +22,22 @@ eegplot(XX, 'title', 'Odstranena komponenta s nejnizsi energii')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Pouze nejslabsi komponenta
-Z = V'*x; % spoctu vsechny hl. komponenty
-Z(3,:)=0;
-XX = V' * Z; % transpozice jako inverze (viz slidy)
-eegplot(XX, 'title', 'Pouze nejslabsi komponenta')
+% Nejsilnejsi komponenta - je to jen sum
+% Z = V'*x; % spoctu vsechny hl. komponenty
+% Z(1,:)=0;
+% Z(2,:)=0;
+% XX = V' * Z; % transpozice jako inverze (viz slidy)
+% eegplot(XX, 'title', 'Nejsilnejsi komponenta')
 
-% Odstranena nejsilnejsi komponenta - muj tip na viteze
+% Dve nejslabsi komponenty - sum a divna amplituda, moc zubate
+% Z = V'*x; % spoctu vsechny hl. komponenty
+% Z(3,:)=0;
+% XX = V' * Z; % transpozice jako inverze (viz slidy)
+% eegplot(XX, 'title', 'Dve nejslabsi komponenty')
+
+% Pouze nejslabsi komponenta
 Z = V'*x; % spoctu vsechny hl. komponenty
 Z(2,:)=0;
 Z(3,:)=0;
 XX = V' * Z; % transpozice jako inverze (viz slidy)
-eegplot(XX, 'title', 'Odstranena nejsilnejsi komponenta')
+eegplot(XX, 'title', 'Pouze nejslabsi komponenta')
