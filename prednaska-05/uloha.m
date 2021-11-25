@@ -21,11 +21,10 @@ for i=1:size(X_stftm, 2)
     X_f = squeeze(X_stftm(:,i,:));
     S_f = squeeze(S_stftm(:,i,:));
 
-%     C_X = cov(squeeze(X_stftm(:,i,:)));
+    % nelze pouzit matlabovskou funkci cov, ptz odcita stredni hodnotu
     C_X = X_f * X_f' / length(X_f);
     C_X_inv = inv(C_X);
 
-%     C_SX = cov(squeeze(S_stftm(:,i,:)), squeeze(X_stftm(:,i,:)));
     C_SX = S_f * X_f' / length(X_f);
     
     W_MMSE = C_X_inv * C_SX;
