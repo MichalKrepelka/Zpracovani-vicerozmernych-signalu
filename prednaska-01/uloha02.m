@@ -54,7 +54,7 @@ M = size(X_theta,3); % pocet framu
 Y_theta = zeros(m, M); % size(X_theta,1), size(X_theta,3)
 for i=1:L % size(X_theta,2)
     x = squeeze(X_theta(:,i,:));
-    y = h_theta(:, i)' * x;
+    y = h_theta(:, i).' * x; % h_theta je komplexni
     Y_theta(i,:) = y;
 end
 Y2 = reshape(Y_theta, 1, L, M); % 1 x size(Y_theta)
