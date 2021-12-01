@@ -6,6 +6,10 @@ load('F01_421C0201_BUS.mat')
 m=size(X,1);    % pocet filtru
 L=16;   % delka filtru
 
+% inicializace generatoru nahodnych cisel
+rng('default');
+rng(42);
+
 %%% bod 1 ulohy %%%
 
 % pripravim si m nahodnych filtru delky L
@@ -60,6 +64,7 @@ Y2 = real(istftm(Y2, hop, N, window));
 %%% bod 3 ulohy %%%
 % Vystupy nebudou stejne, ptz bod 1 byl udelan linearni konvoluci
 % a bod 2 kruhovou, navic pouzito framovani
+figure
 plot(Y1)
 hold on
 plot(Y2)
