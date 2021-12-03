@@ -8,7 +8,7 @@ L=16;   % delka filtru
 
 % inicializace generatoru nahodnych cisel
 rng('default');
-rng(42);
+rng(33);
 
 %%% bod 1 ulohy %%%
 
@@ -31,33 +31,32 @@ Y1 = h_tilde' * Xt_tilde;
 
 %%% bod 2 ulohy %%%
 
-% spoctu transformace jednotlivych filtru
 % vlozim si stftm a istftm z 5. prednasky
 addpath(genpath("../prednaska-05"));
 
+N = 1024;   % delka okenka odpovida delce filtru
+hop = 128;  % posunuti dalsiho okenka
+window = rectwin(N); % zvolim stejne okno pro stft i istft
+
 % spoctu transformace jednotlivych filtru h_i
-h_theta = zeros(size(h));
+h_theta = zeros(m, N);
 for i=1:size(h,1)
-    h_theta(i,:) = fft(h(i,:));
+    h_theta(i,:) = fft(h(i,:), N);
 end
 
 % prevedu X do casove frekvencnio oblasti pomoci stfm
-N = L;     % delka okenka odpovida delce filtru
-hop = 4;  % posunuti dalsiho okenka
-window = rectwin(N); % zvolim stejne okno pro stft i istft
-
-X_theta = sftfm(X, hop, N, window); % 6x16x56666
+X_theta = stftm(X, hop, N, window); % 6x16x56666
 
 % pro kazde theta spoctu radek Y
 M = size(X_theta,3); % pocet framu
 
-Y_theta = zeros(m, M); % size(X_theta,1), size(X_theta,3)
-for i=1:L % size(X_theta,2)
+Y_theta = zeros(N, M);
+for i=1:N %size(X_theta,2)
     x = squeeze(X_theta(:,i,:));
-    y = h_theta(:, i).' * x; % h_theta je komplexni
+    y = h_theta(:,i).' * x; % h_theta je komplexni
     Y_theta(i,:) = y;
 end
-Y2 = reshape(Y_theta, 1, L, M); % 1 x size(Y_theta)
+Y2 = reshape(Y_theta, 1, N, M); % 1 x size(Y_theta)
 % prevedu zpet
 Y2 = real(istftm(Y2, hop, N, window));
 
