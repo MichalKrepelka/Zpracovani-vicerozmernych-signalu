@@ -10,8 +10,8 @@ hop = 64;  % posunuti dalsiho okenka
 window = rectwin(N); % zvolim stejne okno pro stft i istft
 
 % prevedu do casove frekvencnio oblasti pomoci stfm
-X_stftm = sftfm(X, hop, N, window);
-S_stftm = sftfm(S, hop, N, window);
+X_stftm = stftm(X, hop, N, window);
+S_stftm = stftm(S, hop, N, window);
 
 % size(X_stfm) % pocet senzoru x frekvencni rozliseni(delka fft) x pocet framu(delka)
 

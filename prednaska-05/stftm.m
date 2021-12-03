@@ -1,4 +1,4 @@
-function S = sftfm(X, hop, N, window)
+function S = stftm(X, hop, N, window)
     % Provede stft pro vsechny senzory.
     % X - signal ze senzoru
     % hop - posun dvou okenek (odvozuji z nej overlap)

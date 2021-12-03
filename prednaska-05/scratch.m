@@ -10,7 +10,7 @@ hop = 64;  % posunuti dalsiho okenka
 window = rectwin(N); % zvolim stejne okno pro stft i istft
 
 % prevedu do casove frekvencnio oblasti pomoci stfm
-X_stfm = sftfm(X, hop, N, window);
+X_stfm = stftm(X, hop, N, window);
 Xorig = istftm(X_stfm, hop, N, window);
 
 
