@@ -45,7 +45,7 @@ for i=1:size(h,1)
 end
 
 % prevedu X do casove frekvencnio oblasti pomoci stfm
-X_theta = stftm(X, hop, N, window); % 6x16x56666
+X_theta = my_stftm(X, hop, N, window); % 6x16x56666
 
 % pro kazde theta spoctu radek Y
 M = size(X_theta,3); % pocet framu
@@ -58,7 +58,7 @@ for i=1:N %size(X_theta,2)
 end
 Y2 = reshape(Y_theta, 1, N, M); % 1 x size(Y_theta)
 % prevedu zpet
-Y2 = real(istftm(Y2, hop, N, window));
+Y2 = real(my_istftm(Y2, hop, N, window));
 
 %%% bod 3 ulohy %%%
 % Vystupy nebudou stejne, ptz bod 1 byl udelan linearni konvoluci
